@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import Header from './components/layout/Header';
+import Fresh52Interface from './components/Fresh52Interface'
+import About from './components/pages/About';
+
 import './App.css';
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+      <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+      <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossOrigin="anonymous"></link>
+      <div className="App">
+        <div className="container">
+          <Header></Header>
+          <Route exact path="/" render={props => (
+            <React.Fragment>
+              <Fresh52Interface />
+            </React.Fragment>
+            )} />
+          <Route path="/about" component={About} />
+        </div>
+      </div>
+    </Router>
   );
 }
 
